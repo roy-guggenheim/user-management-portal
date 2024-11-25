@@ -1,0 +1,35 @@
+@mixin headline-md {
+    font-family: "Brown LL";
+    font-style: normal;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: -0.5px;
+}
+
+@mixin body-sm {
+    font-family: "Brown LL";
+    font-style: normal;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: -0.25px;
+}
+
+@mixin body-lg {
+    font-family: "Brown LL";
+    font-style: normal;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: -0.5px;
+}
+
+@mixin beta-label-md {
+    font-family: "Brown LL";
+    font-style: normal;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: -0.5px;
+}
