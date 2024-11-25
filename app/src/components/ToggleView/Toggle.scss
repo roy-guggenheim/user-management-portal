@@ -1,0 +1,57 @@
+@mixin size {
+    width: 24px;
+    height: 24px;
+}
+
+.toggle {
+    &-container {
+        width: 58px;
+        height: 32px;
+        padding: 3px;
+        border: 1px solid #E6E7E9;
+        border-radius: 16px;
+        background-color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        position: relative;
+    }
+    &-button {
+        @include size;
+        padding: 0;
+        border: none;
+        background: none;
+        cursor: pointer;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        &:focus {
+            outline: none;
+            &-visible {
+                outline: 2px solid black;
+                outline-offset: 2px;
+            }
+        }
+    }
+    &-icon {
+        @include size;
+        padding: 5px;
+        z-index: 1;
+    }
+    &-selector {
+        @include size;
+        position: absolute;
+        left: 3px;
+        transition: transform 0.2s ease-in-out;
+        
+        &[data-view="grid"] {
+            transform: translateX(0);
+        }
+    
+        &[data-view="list"] {
+            transform: translateX(26px);
+        }
+    }
+}
