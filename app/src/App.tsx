@@ -2,9 +2,9 @@ import React from 'react';
 import ToggleView from './components/ToggleView/ToggleView.tsx';
 import { useState } from 'react';
 import { ViewState } from './components/ToggleView/ToggleViewState.ts';
-import UserRow from './components/Row/UserRow.tsx';
+import Row from './components/TableRow/Row/Row.tsx';
 import './App.scss';
-import HeadRow from './components/Row/HeadRow.tsx';
+import TableHeadRow from './components/TableRow/TableHeadRow/TableHeadRow.tsx';
 
 const avatarIcon = 'https://avatars.githubusercontent.com/u/105651803?v=4';
 const initialView = 'grid';
@@ -14,36 +14,36 @@ function App() {
 
   return (
     <>
-      <HeadRow />
-      <UserRow
+      <TableHeadRow />
+      <Row
         avatar={avatarIcon}
         fullName={'Roy Guggenheim'}
         age={28}
-        city={'Jerusalem'}
+        location={'Jerusalem'}
         email={'roy.guggen@gmail.com'}
         onDetailsClick={() => console.log('Button clicked!')}
       />
-      <UserRow
+      <Row
         avatar={avatarIcon}
         fullName={'Roy Guggenheim'}
         age={28}
-        city={'Jerusalem'}
+        location={'Jerusalem'}
         email={'roy.guggen@gmail.com'}
         onDetailsClick={() => console.log('Button clicked!')}
       />
-      <UserRow
+      <Row
         avatar={avatarIcon}
         fullName={'Roy Guggenheim'}
         age={28}
-        city={'Jerusalem'}
+        location={'Jerusalem'}
         email={'roy.guggen@gmail.com'}
         onDetailsClick={() => console.log('Button clicked!')}
       />
-      <UserRow
+      <Row
         avatar={avatarIcon}
         fullName={'Roy Guggenheim'}
         age={28}
-        city={'Jerusalem'}
+        location={'Jerusalem'}
         email={'roy.guggen@gmail.com'}
         onDetailsClick={() => console.log('Button clicked!')}
       />
