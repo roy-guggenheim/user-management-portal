@@ -1,0 +1,56 @@
+@use "/src/style/mixins";
+
+.row {
+    @include mixins.row-style;
+    height: 52px;
+    border-bottom: 1px solid #f1f1f4;
+    background: transparent;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #f9fafb;
+    }
+
+    .cell-1 {
+        @include mixins.cell-1-of-4;
+        display: flex;
+        padding-right: 24px;
+        align-items: center;
+        flex: 1 0 0;
+        color: rgba(0, 0, 0, 0.87);
+        font-feature-settings: 'liga' off, 'clig' off;
+        @include mixins.typography-body2;
+
+        .avatar-wrapper {
+            width: 32px;
+            height: 32px;
+            margin-right: 12px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: #f1f1f4;
+            flex-shrink: 0;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+
+    .cell-2 {
+        @include mixins.cell-2-of-4;
+        @include mixins.body-lg;
+    }
+
+    .cell-3 {
+        @include mixins.cell-3-of-4;
+        @include mixins.body-md;
+    }
+
+    .cell-4 {
+        @include mixins.cell-4-of-4;
+        @include mixins.body-md;
+    }
+}
