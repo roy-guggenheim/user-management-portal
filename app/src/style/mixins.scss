@@ -89,3 +89,12 @@
 @mixin cell-4-of-4 {
     width: 25%;
 }
+
+@mixin beta-body-md {
+    font-family: "Brown LL";
+    font-style: normal;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: -0.25px;
+}
