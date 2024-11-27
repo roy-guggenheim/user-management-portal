@@ -1,4 +1,4 @@
-import ToggleView from './components/ToggleView/ToggleView.tsx';
+import React from 'react';
 import { useState } from 'react';
 import { ViewState } from './components/ToggleView/ToggleViewState.ts';
 import './App.scss';
@@ -7,9 +7,11 @@ const initialView = 'grid';
 
 function App() {
   const [currentView, setCurrentView] = useState<ViewState>(initialView);
-
+  const [searchValue, setSearchValue] = useState('');
   return (
-    <ToggleView currentView={currentView} onToggle={setCurrentView} />
+    <>
+      Hello World!
+    </>
   )
 }
 
