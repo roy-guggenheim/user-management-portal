@@ -1,0 +1,27 @@
+@use "/src/style/mixins";
+
+.head-row {
+    @include mixins.row-style;
+    height: 56px;
+    border-bottom: 1px solid rgba(44, 45, 48, 0.08);
+
+    .cell-1 {
+        @include mixins.cell-1-of-4;
+        @include mixins.label-lg;
+    }
+
+    .cell-2 {
+        @include mixins.cell-2-of-4;
+        @include mixins.label-lg;
+    }
+
+    .cell-3 {
+        @include mixins.cell-3-of-4;
+        @include mixins.label-lg;
+    }
+
+    .cell-4 {
+        @include mixins.cell-4-of-4;
+        @include mixins.label-lg;
+    }
+}
