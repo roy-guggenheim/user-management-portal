@@ -17,3 +17,17 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+.grid {
+  display: flex;
+  height: 639px;
+  padding-bottom: 40px;
+  align-items: flex-start;
+  align-content: flex-start;
+  gap: 24px;
+  align-self: stretch;
+  flex-wrap: wrap;
+
+  width: 100%;
+  background-color: #F7F8FA;
+}
