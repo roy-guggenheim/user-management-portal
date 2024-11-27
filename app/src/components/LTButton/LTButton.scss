@@ -1,0 +1,30 @@
+@use "/src/style/mixins";
+
+$neutral-color: #EBEBED;
+$neutral-text-color: rgba (44, 45, 48, 0.08);
+$tinted-opacity: 0.8;
+$medium-padding: 12px 16px;
+$text-border: none;
+$default-state-opacity: 1;
+
+@mixin basic-style {
+    display: inline-flex;
+    height: 40px;
+    padding: 8px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+}
+
+@mixin label-style {
+    @include mixins.beta-label-md;
+}
+
+.lt-button {
+    @include basic-style;
+    @include label-style;
+}
