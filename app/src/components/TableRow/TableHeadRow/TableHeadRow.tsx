@@ -3,12 +3,12 @@ import "./TableHeadRow.scss";
 
 function TableHeadRow() {
     return (
-        <div className="head-row">
-            <div className="cell-1">Name</div>
-            <div className="cell-2">Email</div>
-            <div className="cell-3">Age</div>
-            <div className="cell-4">Location</div>
-        </div>
+        <tr className="head-row">
+            <th className="cell-1">Name</th>
+            <th className="cell-2">Email</th>
+            <th className="cell-3">Age</th>
+            <th className="cell-4">Location</th>
+        </tr>
     );
 }
 
