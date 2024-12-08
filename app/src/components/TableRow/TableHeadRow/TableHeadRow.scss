@@ -4,6 +4,7 @@
     @include mixins.row-style;
     height: 56px;
     border-bottom: 1px solid rgba(44, 45, 48, 0.08);
+    background-color: transparent;
 
     .cell-1 {
         @include mixins.cell-1-of-4;
