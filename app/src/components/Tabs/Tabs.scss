@@ -1,0 +1,91 @@
+@use 'src/style/mixins';
+$active-color: #2C2D30;
+$non-active-color: #7A7C81;
+
+.tabs {
+    width: 100%;
+    border-bottom: 1px solid #E6E7E9;
+
+    ol {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    li {
+        display: flex;
+        min-width: 72px;
+    }
+}
+
+.tab-button {
+    display: flex;
+    width: 100%;
+    padding: 16px 0px;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    border: none;
+    border-radius: 4px 4px 0px 0px;
+    position: relative;
+    transition: color 0.2s ease;
+    cursor: pointer;
+
+    &:hover {
+        color: #131f36;
+    }
+
+    p {
+        color: $non-active-color;
+        @include mixins.label-xl;
+        display: flex;
+        padding: 0px 8px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        width: 0;
+        height: 2px;
+        background-color: $active-color;
+        transition: width 0.2s ease;
+    }
+
+    &.direction-forward::after {
+        right: 0;
+        left: auto;
+    }
+
+    &.direction-backward::after {
+        left: 0;
+        right: auto;
+    }
+}
+
+.tab-button-active {
+    @extend .tab-button;
+
+    p {
+        color: $active-color;
+    }
+
+    &::after {
+        width: 100%;
+    }
+
+    &.direction-forward::after {
+        left: 0;
+        right: auto;
+    }
+
+    &.direction-backward::after {
+        right: 0;
+        left: auto;
+    }
+}

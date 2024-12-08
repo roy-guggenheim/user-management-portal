@@ -130,3 +130,21 @@
             black 1px,
             black 100%);
 }
+
+@mixin label-xl {
+    font-family: "Brown LL";
+    font-style: normal;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: -0.5px;
+}
+
+@mixin headline-sm {
+    font-family: "Brown LL";
+    font-style: normal;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: -0.5px;
+}
