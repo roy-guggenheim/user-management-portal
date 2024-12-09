@@ -14,8 +14,13 @@ export type PostProps = {
     comments: Comment[];
 }
 
+type Preview = 'collapsed' | 'expanded';
+
+const INITIAL_PREVIEW: Preview = 'collapsed';
+
 function Post(props: PostProps) {
-    const [isExpanded, setIsExpanded] = useState(false);
+    const [preview, setPreview] = useState<Preview>(INITIAL_PREVIEW);
+    const isExpanded = preview === 'expanded';
     const footerTitle = `${isExpanded ? 'Hide' : 'View'} ${props.comments.length} comments`;
     const arrow = isExpanded ? <ChevronDown /> : <ChevronRight />;
     return (
@@ -26,7 +31,7 @@ function Post(props: PostProps) {
             <div className="post-footer">
                 <p>{footerTitle}</p>
                 <div className="arrow"
-                    onClick={() => setIsExpanded(!isExpanded)}>
+                    onClick={() => setPreview(isExpanded ? 'collapsed' : 'expanded')}>
                     {arrow}
                 </div>
             </div>

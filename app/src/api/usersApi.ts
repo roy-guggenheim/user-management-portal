@@ -1,5 +1,6 @@
 import { PostProps, Comment } from "../components/Post/Post";
-import { getRandomElements, randomInt } from "../utils/utils";
+import { randomInt } from "../utils/math";
+import { getRandomElements } from "../utils/array";
 
 const dataUrl: Record<string, string> = {
     users: 'https://dummyjson.com/users',
