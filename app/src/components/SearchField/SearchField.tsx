@@ -1,5 +1,5 @@
 import React from 'react';
-import { Search } from 'lucide-react';
+import { Search, X } from 'lucide-react';
 import './SearchField.scss';
 
 type SearchFieldProps = {
@@ -19,8 +19,17 @@ function SearchField(props: SearchFieldProps) {
                     placeholder={props.placeholder}
                     value={props.value}
                     onChange={(e) => props.onChange(e.target.value)} />
+                {props.value && (
+                    <button
+                        className="clear-button"
+                        onClick={() => props.onChange('')}
+                        aria-label="Clear search"
+                    >
+                        <X size={16} />
+                    </button>
+                )}
             </div>
-        </div>
+        </div >
     );
 }
 
