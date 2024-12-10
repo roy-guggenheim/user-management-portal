@@ -11,10 +11,11 @@
 
 .search {
     display: flex;
-    padding: 10px 52px 10px 12px;
+    padding: 10px 12px;
     align-items: center;
     gap: 8px;
     flex: 1 0 0;
+    position: relative;
 
     &-icon {
         display: flex;
@@ -41,6 +42,23 @@
             color: #D0D1D3;
             text-align: left;
             @include mixins.beta-body-md;
+        }
+    }
+
+    .clear-button {
+        position: absolute;
+        right: 12px;
+        background: none;
+        border: none;
+        padding: 4px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #A3A6AC;
+
+        &:hover {
+            color: #161719;
         }
     }
 }
