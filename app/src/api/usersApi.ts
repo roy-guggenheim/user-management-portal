@@ -1,3 +1,7 @@
+import { PostProps, Comment } from "../components/Post/Post";
+import { randomInt } from "../utils/math";
+import { getRandomElements } from "../utils/array";
+
 const dataUrl: Record<string, string> = {
     users: 'https://dummyjson.com/users',
     avatar: 'https://i.pravatar.cc/150?img=',
@@ -28,35 +32,95 @@ export type User = {
  * @returns List of users
  */
 export async function fetchUsers(startIndex: number, length: number): Promise<User[]> {
-    try {
-        const [usersResponse, overviewText] = await Promise.all([
-            fetch(`${dataUrl.users}?skip=${startIndex}&limit=${length}`),
-            fetch(dataUrl.overview).then(res => res.text())
-        ]);
+    const [usersData, overviewText] = await Promise.all([
+        fetchData(`${dataUrl.users}?skip=${startIndex}&limit=${length}`),
+        fetchText(dataUrl.overview)
+    ]);
 
-        if (!usersResponse.ok) {
-            throw new Error(
-                `HTTP error! status: ${usersResponse.status}, statusText: ${usersResponse.statusText}`);
-        }
+    return usersData.users.map((user: any) =>
+        transformUserData(user, overviewText)
+    );
+}
 
-        const data = await usersResponse.json();
+/**
+ * Fetches a single user by ID
+ * @param userId User ID
+ * @returns User object
+ */
+export async function fetchUser(userId: number): Promise<User> {
+    const [userData, overviewText] = await Promise.all([
+        fetchData(`${dataUrl.users}/${userId}`),
+        fetchText(dataUrl.overview)
+    ]);
 
-        return data.users.map((user: any) => ({
-            id: user.id,
-            fullName: `${user.firstName} ${user.lastName}`,
-            age: user.age,
-            gender: user.gender,
-            city: user.address.city,
-            stateCode: user.address.stateCode,
-            country: user.address.country,
-            email: user.email,
-            avatarUrl: `${dataUrl.avatar}${user.id % 70}`,
-            backgroundImageUrl: `${dataUrl.backgroundImage}${user.id}/200/300`,
-            overview: overviewText
-        }));
+    return transformUserData(userData, overviewText);
+}
 
-    } catch (error) {
-        console.error('Failed to fetch users:', error);
-        throw error;
+/**
+ * Fetches a list of posts
+ * @param numPosts Number of posts to fetch
+ * @returns List of posts
+ */
+export async function fetchPosts(numPosts: number): Promise<PostProps[]> {
+    const postsData = await fetchData(dataUrl.posts);
+    const selectedPosts = getRandomElements(postsData.posts, numPosts);
+
+    return Promise.all(
+        selectedPosts.map(async (post: any) => ({
+            id: post.id.toString(),
+            body: post.body,
+            comments: await fetchComments(randomInt(1, 10))
+        }))
+    );
+}
+
+/**
+ * Fetches a list of comments
+ * @param numComments Number of comments to fetch
+ * @returns List of comments
+ */
+async function fetchComments(numComments: number): Promise<Comment[]> {
+    const commentsData = await fetchData(dataUrl.comments);
+    const selectedComments = getRandomElements(commentsData.comments, numComments);
+
+    return selectedComments.map((comment: any, index: number) => ({
+        id: `${comment.id}-${index}`,
+        userInitials: comment.user.fullName.split(' ').slice(0, 2)
+            .map((name: string) => name[0].toUpperCase()).join(''),
+        text: comment.body
+    }));
+}
+
+/* -----------------
+   Helper Functions 
+-------------------- */
+
+async function fetchData(url: string): Promise<any> {
+    const response = await fetch(url);
+    if (!response.ok) {
+        throw new Error(
+            `HTTP error! status: ${response.status}, statusText: ${response.statusText}`);
     }
+    return response.json();
+}
+
+async function fetchText(url: string): Promise<string> {
+    const response = await fetch(url);
+    return response.text();
+}
+
+function transformUserData(userData: any, overviewText: string): User {
+    return {
+        id: userData.id,
+        fullName: `${userData.firstName} ${userData.lastName}`,
+        age: userData.age,
+        gender: userData.gender,
+        city: userData.address.city,
+        stateCode: userData.address.stateCode,
+        country: userData.address.country,
+        email: userData.email,
+        avatarUrl: `${dataUrl.avatar}${userData.id % 70}`,
+        backgroundImageUrl: `${dataUrl.backgroundImage}${userData.id}/200/300`,
+        overview: overviewText
+    };
 }
