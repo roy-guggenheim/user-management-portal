@@ -1,0 +1,23 @@
+@use 'src/style/mixins';
+
+.link {
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    gap: 8px;
+    background-color: transparent;
+    color: var(--semantic-fg-secondary, #7A7C81);
+    cursor: pointer;
+
+    .icon {
+        width: 16px;
+        height: 16px;
+        display: flex;
+        align-items: center;
+        justify-self: center;
+    }
+
+    p {
+        @include mixins.body-md;
+    }
+}
