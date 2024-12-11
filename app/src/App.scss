@@ -2,13 +2,14 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scrollbar-width: thin;
 }
 
 img {
   -webkit-user-drag: none;
 }
 
-body {
+body #root {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -16,4 +17,12 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+:root {
+  --semantic-fg-primary: #161719;
+  --semantic-fg-secondary: #7A7C81;
+  --semantic-bg-neutral-inverse: #E6E7E9;
+  --page-background-color: #FCFCFD;
+  --header-height: 66px;
 }
